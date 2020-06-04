@@ -8,7 +8,8 @@ public class Enemy_Fsm : MonoBehaviour
 {       
         //enums are nice to states
         public enum ENEMY_STATE {PATROL,CHASE,ATTACK };
-        public ENEMY_STATE currentState;
+        [SerializeField]
+        private ENEMY_STATE currentState;
     public ENEMY_STATE CurrentState        
     {
         get { return currentState; }
@@ -26,7 +27,7 @@ public class Enemy_Fsm : MonoBehaviour
                     StartCoroutine(EnemyChase());
                     break;
                 case ENEMY_STATE.ATTACK:
-                    StartCoroutine(EnemyPatrol());
+                    StartCoroutine(EnemyAttack());
                     break;
 
             }
@@ -103,8 +104,8 @@ public class Enemy_Fsm : MonoBehaviour
     {
         while (currentState == ENEMY_STATE.ATTACK)
         {
-            agent.isStopped = false;
-            agent.SetDestination(playerTransform.position)
+            agent.isStopped = false; 
+            agent.SetDestination(playerTransform.position);
             while (agent.pathPending)
                 yield return null;
             if (agent.remainingDistance > agent.stoppingDistance)
