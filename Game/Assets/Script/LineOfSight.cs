@@ -58,7 +58,7 @@ public class LineOfSight : MonoBehaviour
                 return true;
             }  
         }
-        else if(distance <= 40){//this condition is in testing phase
+        if(distance <= 40){//this condition is in testing phase
             return true;
         }
         return false;

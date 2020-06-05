@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Dest
+  - shell
+  - Enemy
   layers:
   - Default
   - TransparentFX

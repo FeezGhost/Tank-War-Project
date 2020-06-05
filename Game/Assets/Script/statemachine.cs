@@ -125,9 +125,13 @@ public class statemachine : MonoBehaviour
                 currentstate=enemy_state.CHASE;
             }
             else{
-                if(playerhealth.healthpoints>-1){
-                    playerhealth.healthpoints-=maxDamage*Time.deltaTime;
+                while(true){
+                 if(playerhealth.healthpoints<1){
+                     break;
+                 }
+                 playerhealth.healthpoints-=maxDamage*Time.deltaTime;
                 }
+                
             }
             yield return null;
         }
