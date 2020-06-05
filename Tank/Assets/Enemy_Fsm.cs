@@ -8,8 +8,7 @@ public class Enemy_Fsm : MonoBehaviour
 {       
         //enums are nice to states
         public enum ENEMY_STATE {PATROL,CHASE,ATTACK };
-        [SerializeField]
-        private ENEMY_STATE currentState;
+       
     public ENEMY_STATE CurrentState        
     {
         get { return currentState; }
@@ -33,18 +32,21 @@ public class Enemy_Fsm : MonoBehaviour
             }
         }
     }
+    [SerializeField]
+    private ENEMY_STATE currentState;
     // Lets have some reference
     private checkmyvision checkMyVision;
     private NavMeshAgent agent = null;
+    private Health playerHealth = null;
     private Transform playerTransform = null;
     private Transform patrolDestination = null;
-    private Health playerHealth = null;
+    
     public float maxDamage = 10f;
     private void Awake()
     {
         checkMyVision = GetComponent<checkmyvision>();
         agent = GetComponent<NavMeshAgent>();
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         playerTransform = playerHealth.GetComponent<Transform>();
     }
     // Start is called before the first frame update
@@ -55,27 +57,30 @@ public class Enemy_Fsm : MonoBehaviour
         patrolDestination = destination[Random.Range(0, destination.Length)].GetComponent<Transform>();
         currentState = ENEMY_STATE.PATROL;
     }
-    public IEnumerator EnemyPatrol()
+    public  IEnumerator EnemyPatrol()
     {
         while (currentState == ENEMY_STATE.PATROL)
         {
+
             checkMyVision.sensitivity = checkmyvision.enmsensitivity.HIGH;
             agent.isStopped=false;
             agent.SetDestination(patrolDestination.position);
             while (agent.pathPending)
                 yield return null; // for ensuring we wait for path
-            if (checkmyvision.targetInsight)
+            if (checkMyVision.targetInsight)
             {
+                Debug.Log("Found you, changing to chase state");
                 agent.isStopped=true;
                 currentState = ENEMY_STATE.CHASE;
                 yield break;
             }
-            yield break;
+            yield return null;
         }
         
     }
     public IEnumerator EnemyChase()
     {
+        Debug.Log("Enemy chase starting");
         while (currentState == ENEMY_STATE.CHASE)
         {
             checkMyVision.sensitivity = checkmyvision.enmsensitivity.LOW;
@@ -94,16 +99,19 @@ public class Enemy_Fsm : MonoBehaviour
                     currentState = ENEMY_STATE.PATROL;
                 }
                 else
-                    currentState = ENEMY_STATE.ATTACK;
+                    Debug.Log("Target in sight going for attack");
+                currentState = ENEMY_STATE.ATTACK;
                 yield break;
             }
+            yield break;
         }
-        yield break;
+        
     }
     public IEnumerator EnemyAttack()
     {
         while (currentState == ENEMY_STATE.ATTACK)
         {
+            Debug.Log("I am attacking");
             agent.isStopped = false; 
             agent.SetDestination(playerTransform.position);
             while (agent.pathPending)
@@ -114,16 +122,12 @@ public class Enemy_Fsm : MonoBehaviour
             }
             else
             {
-                playerHealth.healthPoints -= maxDamage * Time.deltaTime;
+                playerHealth.HealthPoints -= maxDamage * Time.deltaTime;
             }
             yield break;
         }
         yield break;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

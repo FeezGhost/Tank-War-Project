@@ -1399,6 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  maxDamage: 10
 --- !u!4 &665209052 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400168, guid: b235179bd2a63d1468dd430670338c55,
@@ -2690,7 +2691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7ba6e3294b2e54bbb241291009230b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1505892847}
 --- !u!1 &1508874960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,6 +3445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f71b987f9f6a049acbc7b251bc2397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthpoints: 100
 --- !u!1001 &1807102723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3517,8 +3518,6 @@ GameObject:
   - component: {fileID: 1870467617}
   - component: {fileID: 1870467620}
   - component: {fileID: 1870467621}
-  - component: {fileID: 1870467622}
-  - component: {fileID: 1870467616}
   m_Layer: 0
   m_Name: tank
   m_TagString: MainCamera
@@ -3595,20 +3594,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1870467616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870467613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71ccc2371683664489a8c0b0de6417e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensitivity: 100
-  playerBody: {fileID: 0}
 --- !u!61 &1870467617
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3730,22 +3715,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1870467622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870467613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7252c3a66f0dbfe448967751b72cafb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnSpeed: 45
-  movementSpeed: 5
-  turningInput: 0
-  movementInput: 0
 --- !u!1 &1875373230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,11 +3955,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400168, guid: b235179bd2a63d1468dd430670338c55, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.69
+      value: -34.7
       objectReference: {fileID: 0}
     - target: {fileID: 400168, guid: b235179bd2a63d1468dd430670338c55, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 356.9
+      value: 559.4
       objectReference: {fileID: 0}
     - target: {fileID: 400168, guid: b235179bd2a63d1468dd430670338c55, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4292,4 +4261,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7ba6e3294b2e54bbb241291009230b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2136991052}
