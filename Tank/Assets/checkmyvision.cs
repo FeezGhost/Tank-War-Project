@@ -8,7 +8,7 @@ public class checkmyvision : MonoBehaviour
     // VARIABLE to check sensitivity
     public enmsensitivity sensitivity = enmsensitivity.HIGH;
     // Are we abel to see the target right now
-    public bool targetInsight = false;
+    public  bool targetInsight = false;
     // field of vision
     public float fieldofvision = 45f;
     // We need a refernce to our here as well
@@ -82,15 +82,5 @@ public class checkmyvision : MonoBehaviour
             return;
         targetInsight = false;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
