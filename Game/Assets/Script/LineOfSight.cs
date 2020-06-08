@@ -7,12 +7,14 @@ public class LineOfSight : MonoBehaviour
     public enum Sensitivity {HIGH,LOW};
     public Sensitivity sensitivity = Sensitivity.HIGH;
     public bool targetInSight = false;
+    public GameObject check1;
     public float fieldOfVision= 45f;
     public Transform myEyes = null;
     public Transform npcTransform = null;
     private SphereCollider sphereCollider = null;
     public  Vector3 angle2;//for testing
     public double distance;//testing also
+    public double check1Dist;
     public GameObject target;//testing mode
     public Vector3 lastknownSight = Vector3.zero;
 
@@ -21,14 +23,18 @@ public class LineOfSight : MonoBehaviour
         npcTransform= GetComponent<Transform>();
         sphereCollider= GetComponent<SphereCollider>();
         lastknownSight=npcTransform.position;
+        check1=GameObject.FindGameObjectWithTag("check1");
 
     }
 
     bool  InMyFieldofVision(){
         Vector3 dirToTarget = target.transform.position - myEyes.position;
+        Vector3 dirToTarget2 = target.transform.position - check1.transform.position;
         float angle=Vector3.Angle(myEyes.forward, dirToTarget);
         angle2= dirToTarget;
         distance=Mathf.Sqrt(Mathf.Pow(angle2.x,2) +Mathf.Pow(angle2.y,2)+Mathf.Pow(angle2.z,2));
+        
+        check1Dist=Mathf.Sqrt(Mathf.Pow(dirToTarget2.x,2) +Mathf.Pow(dirToTarget2.y,2)+Mathf.Pow(dirToTarget2.z,2));
         if(angle<= fieldOfVision){
             Debug.Log(angle);
             return true;

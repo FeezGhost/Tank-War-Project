@@ -2,24 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletWeapon : MonoBehaviour
+public class weapon : MonoBehaviour
 {
+    // Start is called before the first frame update
+    public LineOfSight checkMyVision;
+    public double dis;
+
     public GameObject bulletPrefab;
     
     public GameObject bulletSpawn;
-    public float bulletSpeed= 100;
-    public float lifeTime= 50;
+    public float bulletSpeed= 60;
+    public float lifeTime= 30;
 
     // Start is called before the first frame update
     void Start()
     {
+        checkMyVision=GetComponent<LineOfSight>();
+        dis = checkMyVision.distance;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(checkMyVision.distance<25){
             Fire();
         }
     }
