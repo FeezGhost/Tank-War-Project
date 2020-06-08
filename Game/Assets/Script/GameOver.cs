@@ -7,11 +7,4 @@ public class GameOver : MonoBehaviour
     void restart(){
         SceneManager.LoadScene(0);
     }
-    void  start(){
-        Invoke("Restart", restartDelay);
-    }
-    void update(){
-        
-            Invoke("Restart", restartDelay);
-    }
 }

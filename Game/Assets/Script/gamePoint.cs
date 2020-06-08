@@ -40,7 +40,7 @@ public class gamePoint : MonoBehaviour
     void Update()
     {
         if(IsClose()){
-            Invoke("endGame", delay);
+            Invoke("endGame",delay);
         }
     }
 }
