@@ -15,6 +15,6 @@ public class EndGame : MonoBehaviour
         
     }
     void restart(){
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 }
