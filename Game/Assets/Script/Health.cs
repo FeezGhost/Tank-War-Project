@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
   void Update(){
       
    if(healthpoints<=1){
+       
        if(parent.gameObject.CompareTag("Player")){
            gameManager.endGame();
        }
