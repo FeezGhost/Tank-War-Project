@@ -13,6 +13,7 @@ public class LineOfSight : MonoBehaviour
     private SphereCollider sphereCollider = null;
     public  Vector3 angle2;//for testing
     public double distance;//testing also
+    public double check1Dist;
     public GameObject target;//testing mode
     public Vector3 lastknownSight = Vector3.zero;
 
@@ -29,8 +30,8 @@ public class LineOfSight : MonoBehaviour
         float angle=Vector3.Angle(myEyes.forward, dirToTarget);
         angle2= dirToTarget;
         distance=Mathf.Sqrt(Mathf.Pow(angle2.x,2) +Mathf.Pow(angle2.y,2)+Mathf.Pow(angle2.z,2));
+        
         if(angle<= fieldOfVision){
-            Debug.Log(angle);
             return true;
         }
         else{
@@ -52,13 +53,13 @@ public class LineOfSight : MonoBehaviour
         }
     }
         bool ClearLineOfSight(){
-        RaycastHit hit;
-        if(Physics.Raycast(myEyes.position, (target.transform.position - myEyes.position).normalized, out hit, sphereCollider.radius )){
-            if(hit.transform.CompareTag("Player")){
-                return true;
-            }  
-        }
-        else if(distance <= 40){//this condition is in testing phase
+        // RaycastHit hit;
+        // if(Physics.Raycast(myEyes.position, (target.transform.position - myEyes.position).normalized, out hit, sphereCollider.radius )){
+        //     if(hit.transform.CompareTag("Player")){
+        //         return true;
+        //     }  
+        // }
+        if(distance <= 80){//this condition is in testing phase
             return true;
         }
         return false;
