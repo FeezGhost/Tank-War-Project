@@ -4,9 +4,9 @@ using UnityEngine;
 using  UnityEngine.SceneManagement;
 public class gamePoint : MonoBehaviour
 {
-    public  Vector3 angle2;//for testing
-    public double distance;//testing also
-    public GameObject target;//testing mode
+    public  Vector3 angle2;
+    public double distance;
+    public GameObject target;
     public Vector3 lastknownSight = Vector3.zero;
     public GameObject parent;
     public float delay=2f;

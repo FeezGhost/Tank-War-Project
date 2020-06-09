@@ -11,10 +11,10 @@ public class LineOfSight : MonoBehaviour
     public Transform myEyes = null;
     public Transform npcTransform = null;
     private SphereCollider sphereCollider = null;
-    public  Vector3 angle2;//for testing
-    public double distance;//testing also
+    public  Vector3 angle2;
+    public double distance;
     public double check1Dist;
-    public GameObject target;//testing mode
+    public GameObject target;
     public Vector3 lastknownSight = Vector3.zero;
 
     private void Awake()
@@ -53,13 +53,7 @@ public class LineOfSight : MonoBehaviour
         }
     }
         bool ClearLineOfSight(){
-        // RaycastHit hit;
-        // if(Physics.Raycast(myEyes.position, (target.transform.position - myEyes.position).normalized, out hit, sphereCollider.radius )){
-        //     if(hit.transform.CompareTag("Player")){
-        //         return true;
-        //     }  
-        // }
-        if(distance <= 80){//this condition is in testing phase
+        if(distance <= 80){
             return true;
         }
         return false;

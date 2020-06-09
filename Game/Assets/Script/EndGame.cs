@@ -9,7 +9,6 @@ public class EndGame : MonoBehaviour
         if(gamehasEnded==false){
             gamehasEnded= true;
             Debug.Log("Game End");
-            // Invoke("Restart", restartDelay);
             restart();
         }
         

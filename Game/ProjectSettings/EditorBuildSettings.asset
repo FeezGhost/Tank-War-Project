@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Usman1.unity
     guid: 11e6c80ef6d267d459117c8b466a6928
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/wajahatscene.unity
-    guid: 47a2eedd9659f8749a59d50630f49a09
+    path: Assets/Scenes/Wajahat Scene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
