@@ -18,12 +18,9 @@ public class BulletBehaviour : MonoBehaviour
            playerhealth.healthpoints-=10;
            if(other.CompareTag("Enemy")){
                Enemy=GameObject.FindGameObjectWithTag("Enemy");
-            // //    score=GameObject.FindGameObjectWithTag("text");
             Text mText = score.GetComponent<Text>();
              mText.text="100"+10;
            }
-        //    Destroy(other);
-        //    Destroy(other.gameObject);
        }
        Destroy(gameObject);
    }
